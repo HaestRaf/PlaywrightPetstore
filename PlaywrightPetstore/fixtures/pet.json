@@ -1,0 +1,41 @@
+{
+    "pet1": 
+    {
+      "id": 12,
+      "category": {
+        "id": 1,
+        "name": "Dogs"
+      },
+      "name": "Borkignited",
+      "photoUrls": [
+        "string"
+      ],
+      "tags": [
+        {
+          "id": 0,
+          "name": "string"
+        }
+      ],
+      "status": "available"
+    },
+
+    "pet2":
+    {
+      "id": 12,
+      "category": {
+        "id": 1,
+        "name": "Cats"
+      },
+      "name": "Purrrrcy",
+      "photoUrls": [
+        "string"
+      ],
+      "tags": [
+        {
+          "id": 0,
+          "name": "string"
+        }
+      ],
+      "status": "available"
+    }
+  }
