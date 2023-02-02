@@ -2,54 +2,56 @@ exports.petstoreMainPage = class petstoreMainPage {
 
     constructor(page) {
         this.page = page;
-        this.postBtn = this.page.locator('id=operations-pet-addPet');
-        this.getBtn = this.page.locator('id=operations-pet-getPetById');
-        this.updateBtn = this.page.locator('id=operations-pet-updatePet');
-        this.deleteBtn = this.page.locator('id=operations-pet-deletePet');
-        this.tryoutBtn = this.page.locator('.btn.try-out__btn');
-        this.executeBtn = this.page.locator('.btn.execute.opblock-control__btn');
-        this.placeholderPetId = this.page.locator('input[placeholder="petId"]');
-        this.petTextbody = this.page.locator('.body-param__text');
+        this.btnPost = this.page.locator('id=operations-pet-addPet');
+        this.btnGet = this.page.locator('id=operations-pet-getPetById');
+        this.btnUpdate = this.page.locator('id=operations-pet-updatePet');
+        this.btnDelete = this.page.locator('id=operations-pet-deletePet');
+        this.btnTryout = this.page.locator('.btn.try-out__btn');
+        this.btnExecute = this.page.locator('.btn.execute.opblock-control__btn');
+        this.petIdPlaceHolder = this.page.locator('input[placeholder="petId"]');
+        this.textBodyPet = this.page.locator('.body-param__text');
         this.exampleValue = this.page.locator('.microlight').first();
         this.responseBody = this.page.locator('tr.response > td > div > div > .microlight')
+        this.contentType = this.page.locator('select.content-type')
       }
 
       async goto() {
         await this.page.goto('https://petstore3.swagger.io/');
+        
       }
 
-      async postPet (pet) {
+      async postPetRequest (pet) {
         await this.goto();
-        await this.postBtn.click();
-        await this.tryoutBtn.click();
+        await this.btnPost.click();
+        await this.btnTryout.click();
         const petToString = JSON.stringify(pet);
-        await this.petTextbody.fill(petToString);
-        await this.executeBtn.click();
+        await this.textBodyPet.fill(petToString);
+        await this.btnExecute.click();
       }
 
-      async getPet (id) {
+      async getPetRequest (id) {
         await this.goto();
-        await this.getBtn.click();
-        await this.page.locator('select.content-type').selectOption('application/json')
-        await this.tryoutBtn.click();
-        await this.placeholderPetId.fill(id)
-        await this.executeBtn.click();
+        await this.btnGet.click();
+        await this.contentType.selectOption('application/json')
+        await this.btnTryout.click();
+        await this.petIdPlaceHolder.fill(id)
+        await this.btnExecute.click();
       }
     
-      async updatePet (pet) {
+      async updatePetRequest (pet) {
         await this.goto();
-        await this.updateBtn.click();
-        await this.tryoutBtn.click();
+        await this.btnUpdate.click();
+        await this.btnTryout.click();
         const petToString = JSON.stringify(pet);
-        await this.petTextbody.fill(petToString);
-        await this.executeBtn.click();
+        await this.textBodyPet.fill(petToString);
+        await this.btnExecute.click();
       }
 
-      async deletePet (id) {
+      async deletePetRequest (id) {
         await this.goto();
-        await this.deleteBtn.click();
-        await this.tryoutBtn.click();
-        await this.placeholderPetId.fill(id)
-        await this.executeBtn.click();
+        await this.btnDelete.click();
+        await this.btnTryout.click();
+        await this.petIdPlaceHolder.fill(id)
+        await this.btnExecute.click();
       }
 }
