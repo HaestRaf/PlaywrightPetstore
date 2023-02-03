@@ -1,4 +1,4 @@
-export const commonPage = {
+export const commonComponents = {
 btnTryout: '.btn.try-out__btn',
 btnExecute: '.btn.execute.opblock-control__btn',
 petIdPlaceHolder: 'input[placeholder="petId"]',

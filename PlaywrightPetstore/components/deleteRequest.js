@@ -1,4 +1,4 @@
-import { commonPage } from '../components/commonPage'
+import { commonComponents } from './commonComponents'
 import { petstoreMainPage } from '../pages/petstoreMainPage.page.js';
 
 export const deleteRequest = {
@@ -8,8 +8,8 @@ async deletePetRequest (page, id) {
   const petPage = new petstoreMainPage(page);
   await petPage.goto();
   await page.locator(this.btnDelete).click();
-  await page.locator(commonPage.btnTryout).click();
-  await page.locator(commonPage.petIdPlaceHolder).fill(id)
-  await page.locator(commonPage.btnExecute).click();
+  await page.locator(commonComponents.btnTryout).click();
+  await page.locator(commonComponents.petIdPlaceHolder).fill(id)
+  await page.locator(commonComponents.btnExecute).click();
   }
 }

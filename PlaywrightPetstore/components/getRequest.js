@@ -1,4 +1,4 @@
-import { commonPage } from './commonPage.js'
+import { commonComponents } from './commonComponents.js'
 import { petstoreMainPage } from '../pages/petstoreMainPage.page.js';
 
 export const getRequest = {
@@ -8,9 +8,9 @@ async getPetRequest (page, id) {
   const petPage = new petstoreMainPage(page);
   await petPage.goto();
   await page.locator(this.btnGet).click();
-  await page.locator(commonPage.contentType).selectOption('application/json');
-  await page.locator(commonPage.btnTryout).click();
-  await page.locator(commonPage.petIdPlaceHolder).fill(id)
-  await page.locator(commonPage.btnExecute).click();
+  await page.locator(commonComponents.contentType).selectOption('application/json');
+  await page.locator(commonComponents.btnTryout).click();
+  await page.locator(commonComponents.petIdPlaceHolder).fill(id)
+  await page.locator(commonComponents.btnExecute).click();
   }
 }
